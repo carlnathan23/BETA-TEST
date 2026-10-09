@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fil"><head><base href="../"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#120e22">
+<title>Aral Go+ — Igorot &amp; Badjao</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"></head><body>
+<div id="g">
+<canvas id="cv" width="800" height="450" tabindex="0" role="img" aria-label="Aral Go+ game screen"></canvas><button id="fs" aria-label="Fullscreen">&#x26F6;</button>
+<button id="pauseButton" aria-label="Buksan ang menu ng laro" aria-controls="pause" aria-expanded="false">☰ MENU</button>
+<div id="hud" aria-live="polite"><span id="q"></span></div>
+<div id="lbs"></div><div id="hint"></div>
+<div id="dlg" role="dialog" aria-live="polite"><b id="dn"></b><canvas id="pt" width="24" height="24"></canvas><p id="dt"></p><i>▼</i></div>
+<div id="card"><i></i><b id="ct"></b><i></i></div><div id="toast"></div>
+<div id="fade"></div>
+
+<div class="scr on" id="menu"><div id="logo"><h1>ARAL GO+</h1><small>Pixel na paglalakbay sa Pilipinas</small></div><div id="nav"><button data-go="sel">START</button><button data-go="how">HOW TO PLAY</button><button data-go="opt">OPTIONS</button><button data-go="ach">ACHIEVEMENTS</button><button data-go="quit">QUIT</button></div><small>Igorot • Badjao</small></div>
+
+<div class="scr" id="sel"><h2>Pumili ng tauhan</h2>
+<div class="cards">
+<div class="card" id="cb" tabindex="0" role="button" aria-label="Piliin ang Badjao"><canvas id="pb" width="48" height="64"></canvas><b>BADJAO</b><small>Buhay sa Dagat (draft)</small></div>
+<div class="card" id="ci" tabindex="0" role="button" aria-label="Piliin ang Igorot"><canvas id="pi" width="48" height="64"></canvas><b>IGOROT</b><small>Buhay sa Ilaya</small></div></div>
+<p id="sm"></p><button data-go="menu">BACK</button></div>
+
+<div class="scr" id="opt"><h2>Options</h2><button id="snd">TUNOG: ON</button>
+<p>A / D o ◀ ▶ : lakad<br>W / S o ▲ ▼ : lumapit o lumayo<br>Shift : tumakbo<br>E / Space / Enter : kausapin o ituloy ang usapan</p><button data-go="menu">BACK</button></div>
+
+<div class="scr" id="ach"><h2>Achievements</h2><div id="al"></div><button data-go="menu">BACK</button></div>
+
+<div class="scr" id="quit"><h2>Salamat sa paglalaro!</h2><p>Isara ang tab ng browser para tuluyang lumabas.</p><button data-go="menu">BALIK SA MENU</button></div>
+
+<div class="scr" id="mg"></div>
+<div class="scr" id="how"><h2>Paano Laruin</h2>
+<div class="row"><b>Paglalakad</b><small>A / D o ◀ ▶ : kaliwa at kanan. W / S o ▲ ▼ : lumapit o lumayo sa screen. Shift : tumakbo. Sa phone, gamitin ang mga button sa screen. Pindutin ang ⛶ o F para sa fullscreen.</small></div>
+<div class="row"><b>Pakikipag-usap at pag-check</b><small>Lumapit sa tao o bagay na may dilaw na tatsulok at pangalan (sa loob ng bahay, may kumikislap na dilaw na balangkas). May maikling paglalarawan sa ibaba kapag malapit ka. Pindutin ang E, Space o Enter (o ang bilog na E button). Pindutin ulit para ituloy ang usapan. Kung nagta-type pa ang teksto, ipapakita nito agad ang buong linya.</small></div>
+<div class="row"><b>Objectives</b><small>Nasa kaliwang-itaas ang listahan ng gagawin. I-tap o i-click ito para paliitin o palakihin.</small></div>
+<div class="row"><b>Menu habang naglalaro</b><small>I-tap ang MENU sa kanang-itaas, o pindutin ang Esc / P sa PC. Maaari mong ituloy ang laro, baguhin ang tunog, o bumalik sa title.</small></div>
+<div class="row"><b>Mini games</b><small>Pindutin ang mga hakbang ayon sa tamang pagkakasunod-sunod, o piliin ang tamang sagot. Kapag mali, yayanig ang button; subukan ulit.</small></div>
+<div class="row"><b>Pangangalap ng yamang-dagat (Badjao)</b><small>Sa dulo ng pantalan, sisisid ka. Lumangoy gamit ang arrow keys o WASD, lumapit sa isdang kahel, isdang asul, perlas, alimango, pugita o pawikan, at pindutin ang E (o ang E button) para idagdag sa koleksyon. Nasa buhangin ang perlas at alimango. Kolektahin ang lahat ng 9.</small></div>
+<div class="row"><b>Achievements</b><small>Nabubuksan habang naglalaro. Makikita ang mga ito sa ACHIEVEMENTS sa main menu.</small></div>
+<button data-go="menu">BACK</button></div>
+<div class="scr" id="tut"></div><div id="swh"></div>
+<div class="scr" id="end"></div>
+<div id="pause" role="dialog" aria-modal="true" aria-labelledby="pauseTitle" hidden>
+  <div class="pause-panel">
+    <h2 id="pauseTitle">PAUSE</h2>
+    <p>Nakahinto ang laro.</p>
+    <div id="pauseActions">
+      <button id="resume">ITULOY / RESUME</button>
+      <button id="pauseSound" aria-pressed="true">TUNOG: ON</button>
+      <button id="leaveGame">BALIK SA TITLE</button>
+    </div>
+    <div id="leaveConfirm" hidden>
+      <p>Babalik sa simula ang araw na ito. Mananatili ang iyong achievements.</p>
+      <button id="cancelLeave">ITULOY ANG LARO</button>
+      <button id="confirmLeave">OO, BALIK SA TITLE</button>
+    </div>
+    <small>PC: Esc / P para sa menu. WASD / arrows para lumakad, E para kumilos.<br>Phone: gamitin ang direction buttons at E.</small>
+  </div>
+</div>
+</div>
+<div id="pad" aria-label="Mga kontrol sa touch"><div id="dp"><button id="bu" aria-label="Lumapit">▲</button><button id="bl" aria-label="Kaliwa">◀</button><button id="bdn" aria-label="Lumayo">▼</button><button id="br" aria-label="Kanan">▶</button></div><button id="ba" aria-label="Makipag-usap o kumilos">E</button></div>
+
+<script src="game.js"></script><script src="tests/preview.js"></script></body></html>
